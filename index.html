@@ -2,82 +2,122 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Birthday Site</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy 20th Birthday</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #fff8f8;
       margin: 0;
-      padding: 20px;
+      padding: 40px 20px;
       display: flex;
       justify-content: center;
+      color: #333;
     }
 
-    /* This container creates the Left and Right columns from your drawing */
+    /* Layout Container */
     .main-container {
       display: flex;
       flex-direction: row;
-      gap: 40px;
-      max-width: 1000px;
+      gap: 50px;
+      max-width: 1100px;
       width: 100%;
       align-items: flex-start;
     }
 
-    /* LEFT COLUMN: Slideshow/Pictures */
+    /* LEFT SIDE: Fixed Pictures */
     .left-column {
-      flex: 0 0 200px; /* Fixed width for the picture area */
+      flex: 0 0 250px;
+      position: sticky; /* Keeps photos on screen while scrolling */
+      top: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .slideshow {
       position: relative;
-      width: 200px;
-      height: 200px;
-      margin-bottom: 20px;
+      width: 220px;
+      height: 220px;
+      background: white;
+      padding: 10px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(214, 0, 110, 0.1);
     }
 
     .slideshow img {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 180px;
-      height: 180px;
+      top: 10px;
+      left: 10px;
+      width: 220px;
+      height: 220px;
       object-fit: cover;
-      border-radius: 20px; /* Changed to slightly rounded square like your sketch */
-      border: 3px solid #d6006e;
+      border-radius: 15px;
       opacity: 0;
       animation: fade 48s infinite;
     }
 
-    /* RIGHT COLUMN: Letter, Surprise, and Birthday Header */
+    /* RIGHT SIDE: Content */
     .right-column {
-      flex: 1; /* Takes up the remaining space */
+      flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 30px;
     }
 
-    /* Individual Section Styling */
     .section-box {
-      padding: 20px;
-      border-radius: 15px;
-      text-align: left;
+      padding: 35px;
+      border-radius: 25px;
+      line-height: 1.8;
     }
 
-    .letter { background-color: #ffe6e6; border: 2px solid #ffb3b3; }
-    .surprise { background-color: #fff0f5; border: 2px solid #ffcce0; }
-    .birthday { 
-      background-color: #ffcccc; 
-      border: 2px solid #ff9999; 
+    .birthday {
+      background: linear-gradient(135deg, #ffcccc 0%, #ffe6e6 100%);
+      border: 1px solid #ff9999;
       text-align: center;
     }
 
     .birthday h1 {
-      font-size: 2.5em;
+      font-size: 3em;
       color: #d6006e;
       margin: 0;
+      letter-spacing: 2px;
     }
 
-    /* nth-child delays (Same as before) */
+    .letter {
+      background-color: #ffffff;
+      border: 1px solid #ffe0e0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+      white-space: pre-wrap; /* RESPECTS YOUR LINE BREAKS */
+      font-size: 1.1em;
+      color: #444;
+    }
+
+    .letter h2 {
+      color: #d6006e;
+      border-bottom: 2px solid #ffe6e6;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .surprise {
+      background-color: #fff0f5;
+      border: 2px dashed #ffcce0;
+      text-align: center;
+      font-weight: bold;
+      color: #d6006e;
+    }
+
+    /* Animation logic */
+    @keyframes fade {
+      0% { opacity: 0; }
+      2% { opacity: 1; }
+      8% { opacity: 1; }
+      10% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    /* Delays for 12 images */
     .slideshow img:nth-child(1) { animation-delay: 0s; }
     .slideshow img:nth-child(2) { animation-delay: 4s; }
     .slideshow img:nth-child(3) { animation-delay: 8s; }
@@ -91,12 +131,10 @@
     .slideshow img:nth-child(11) { animation-delay: 40s; }
     .slideshow img:nth-child(12) { animation-delay: 44s; }
 
-    @keyframes fade {
-      0% { opacity: 0; }
-      5% { opacity: 1; }
-      20% { opacity: 1; }
-      25% { opacity: 0; }
-      100% { opacity: 0; }
+    /* Responsive for Mobile */
+    @media (max-width: 768px) {
+      .main-container { flex-direction: column; align-items: center; }
+      .left-column { position: relative; top: 0; flex: none; }
     }
   </style>
 </head>
@@ -118,7 +156,8 @@
         <img src="tt11.jpg" alt="Memory 11">
         <img src="tt12.jpg" alt="Memory 12">
       </div>
-      </aside>
+      <p style="color: #d6006e; margin-top: 15px; font-weight: bold;">Our Memories ✨</p>
+    </aside>
 
     <main class="right-column">
       <section class="section-box birthday">
@@ -126,9 +165,10 @@
         <p>Wishing you joy and love today!</p>
       </section>
 
-      <section class="section-box letter">
+      <article class="section-box letter">
         <h2>편지</h2>
-        <p>Đây là lần đầu tiên mình làm điều gì đó như thế này nên mình hy vọng bạn sẽ không thấy ngượng hay khó hiểu… Mình đã cố tìm cách để làm bạn đoán xem mình chuẩn bị gì cho bạn hahaha… vì mấy thứ như thế này mình đã tốn khá nhiều thời gian để chuẩn bị 😭 bạn biết mà, mình không phải chuyên gia về code nhưng mình đã cố học một vài thứ cơ bản để hợp với sở thích của bạn. Thật sự mình cảm thấy nó rất xứng đáng hahaha… dù sao thì,
+
+Đây là lần đầu tiên mình làm điều gì đó như thế này nên mình hy vọng bạn sẽ không thấy ngượng hay khó hiểu… Mình đã cố tìm cách để làm bạn đoán xem mình chuẩn bị gì cho bạn hahaha… vì mấy thứ như thế này mình đã tốn khá nhiều thời gian để chuẩn bị 😭 bạn biết mà, mình không phải chuyên gia về code nhưng mình đã cố học một vài thứ cơ bản để hợp với sở thích của bạn. Thật sự mình cảm thấy nó rất xứng đáng hahaha… dù sao thì,
 
 Trước hết, chúc mừng sinh nhật bạn, và chúc mừng bạn bước sang tuổi trưởng thành. Mình chỉ muốn nhắc bạn rằng có những người không thể sống đến tuổi 20, và việc bạn đang ở đây là một dấu hiệu cho thấy bạn là một người mạnh mẽ. Bước sang tuổi 20 không phải là điều dễ dàng. Bạn sẽ bắt đầu có những vấn đề riêng, áp lực riêng, cuộc sống riêng, và việc xây dựng tương lai là một giai đoạn rất quan trọng đối với bạn. Năm tháng đẹp nhất của bạn, và mình rất vui vì đã được ở bên bạn cho đến khi bạn tròn 20 tuổi. Chúng ta gặp nhau khi 17 tuổi, trở nên thân thiết khi 18, và giờ mình được chứng kiến bạn bước sang tuổi 20. Bạn đã đi được một chặng đường dài như vậy và mình tự hào về những gì bạn đã đạt được.
 
@@ -158,20 +198,17 @@ Mình cũng ổn nếu bạn gặp gỡ những người mới, nhưng hãy nói
 
 THÔI NÀO CÔ GÁI ƠI, BẠN CÓ THỂ ĐỌC NÓ BẤT CỨ LÚC NÀO BẠN MUỐN, HÔM NAY LÀ SINH NHẬT BẠN ĐÓOOO. LÀM BẤT CỨ ĐIỀU GÌ BẠN MUỐN. SỐNG HẾT MÌNH. CHÚC MỪNG SINH NHẬT CÔ GÁI XINH ĐẸP CỦA MÌNH, LET’S GOOO, ILYYY 💗
 
-Xin lỗi vì đã bắt bạn phải đọc một lá thư dài như thế này. Mình đã định viết tay nhưng thư của mình lúc nào cũng rất dài và mình sợ có những lỗi nhỏ có thể gây hiểu lầm. :) CHÚC MỪNG SINH NHẬT CÔ GÁI LỚN CỦA MÌNH 💗  
+Xin lỗi vì đã bắt bạn phải đọc một lá thư dài như thế này. Mình đã định viết tay nhưng thư của mình lúc nào cũng rất dài và mình sợ có những lỗi nhỏ có thể gây hiểu lầm. :) CHÚC MỪNG SINH NHẬT CÔ GÁI LỚN CỦA MÌNH 💗    
     
       With love,  
-</p>
-      </section>
+      </article>
 
       <section class="section-box surprise">
         <h2>Surprise 🎉</h2>
-        <p>HAPPY BIRTHDAY KIDDO</p>
+        <p>HAPPY BIRTHDAY KIDDO!</p>
       </section>
     </main>
   </div>
 
 </body>
 </html>
-
-
