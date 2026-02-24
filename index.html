@@ -6,35 +6,78 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      text-align: center;
       background-color: #fff8f8;
       margin: 0;
-      padding: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
     }
 
-    /* Slideshow styles */
+    /* This container creates the Left and Right columns from your drawing */
+    .main-container {
+      display: flex;
+      flex-direction: row;
+      gap: 40px;
+      max-width: 1000px;
+      width: 100%;
+      align-items: flex-start;
+    }
+
+    /* LEFT COLUMN: Slideshow/Pictures */
+    .left-column {
+      flex: 0 0 200px; /* Fixed width for the picture area */
+    }
+
     .slideshow {
       position: relative;
-      width: 100%;
-      height: 220px; /* smaller height */
-      overflow: hidden;
-      margin-top: 20px;
+      width: 200px;
+      height: 200px;
+      margin-bottom: 20px;
     }
 
     .slideshow img {
       position: absolute;
       top: 0;
-      left: 50%;
-      transform: translateX(-50%);
+      left: 0;
       width: 180px;
       height: 180px;
       object-fit: cover;
-      border-radius: 50%; /* round shape */
+      border-radius: 20px; /* Changed to slightly rounded square like your sketch */
+      border: 3px solid #d6006e;
       opacity: 0;
       animation: fade 48s infinite;
     }
 
-    /* nth-child delays for 12 images */
+    /* RIGHT COLUMN: Letter, Surprise, and Birthday Header */
+    .right-column {
+      flex: 1; /* Takes up the remaining space */
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Individual Section Styling */
+    .section-box {
+      padding: 20px;
+      border-radius: 15px;
+      text-align: left;
+    }
+
+    .letter { background-color: #ffe6e6; border: 2px solid #ffb3b3; }
+    .surprise { background-color: #fff0f5; border: 2px solid #ffcce0; }
+    .birthday { 
+      background-color: #ffcccc; 
+      border: 2px solid #ff9999; 
+      text-align: center;
+    }
+
+    .birthday h1 {
+      font-size: 2.5em;
+      color: #d6006e;
+      margin: 0;
+    }
+
+    /* nth-child delays (Same as before) */
     .slideshow img:nth-child(1) { animation-delay: 0s; }
     .slideshow img:nth-child(2) { animation-delay: 4s; }
     .slideshow img:nth-child(3) { animation-delay: 8s; }
@@ -50,77 +93,50 @@
 
     @keyframes fade {
       0% { opacity: 0; }
-      10% { opacity: 1; }
-      25% { opacity: 1; }
-      35% { opacity: 0; }
+      5% { opacity: 1; }
+      20% { opacity: 1; }
+      25% { opacity: 0; }
       100% { opacity: 0; }
-    }
-
-    /* Letter section */
-    .letter {
-      margin: 40px auto;
-      max-width: 600px;
-      padding: 20px;
-      background-color: #ffe6e6;
-      border-radius: 10px;
-    }
-
-    /* Surprise section */
-    .surprise {
-      margin: 40px auto;
-      max-width: 600px;
-      padding: 20px;
-      background-color: #fff0f5;
-      border-radius: 10px;
-    }
-
-    /* Birthday message */
-    .birthday {
-      margin: 40px auto;
-      padding: 20px;
-      background-color: #ffcccc;
-      border-radius: 10px;
-    }
-
-    .birthday h1 {
-      font-size: 2.5em;
-      color: #d6006e;
     }
   </style>
 </head>
 <body>
-  <!-- Pictures section -->
-  <section class="slideshow">
-    <img src="tt1.jpg" alt="Memory 1">
-    <img src="tt2.png" alt="Memory 2">
-    <img src="tt3.jpg" alt="Memory 3">
-    <img src="tt4.jpg" alt="Memory 4">
-    <img src="tt5.jpg" alt="Memory 5">
-    <img src="tt6.jpg" alt="Memory 6">
-    <img src="tt7.jpg" alt="Memory 7">
-    <img src="tt8.jpg" alt="Memory 8">
-    <img src="tt9.jpg" alt="Memory 9">
-    <img src="tt10.jpg" alt="Memory 10">
-    <img src="tt11.jpg" alt="Memory 11">
-    <img src="tt12.jpg" alt="Memory 12">
-  </section>
 
-  <!-- Letter section -->
-  <section class="letter">
-    <h2>My Letter to You</h2>
-    <p>Write your heartfelt birthday message here...</p>
-  </section>
+  <div class="main-container">
+    <aside class="left-column">
+      <div class="slideshow">
+        <img src="tt1.jpg" alt="Memory 1">
+        <img src="tt2.png" alt="Memory 2">
+        <img src="tt3.jpg" alt="Memory 3">
+        <img src="tt4.jpg" alt="Memory 4">
+        <img src="tt5.jpg" alt="Memory 5">
+        <img src="tt6.jpg" alt="Memory 6">
+        <img src="tt7.jpg" alt="Memory 7">
+        <img src="tt8.jpg" alt="Memory 8">
+        <img src="tt9.jpg" alt="Memory 9">
+        <img src="tt10.jpg" alt="Memory 10">
+        <img src="tt11.jpg" alt="Memory 11">
+        <img src="tt12.jpg" alt="Memory 12">
+      </div>
+      </aside>
 
-  <!-- Surprise section -->
-  <section class="surprise">
-    <h2>Surprise 🎉</h2>
-    <p>Put your hidden message, animation, or interactive code here.</p>
-  </section>
+    <main class="right-column">
+      <section class="section-box birthday">
+        <h1>Happy Birthday!</h1>
+        <p>Wishing you joy and love today!</p>
+      </section>
 
-  <!-- Happy Birthday message -->
-  <section class="birthday">
-    <h1>Happy Birthday!</h1>
-    <p>Wishing you joy and love today!</p>
-  </section>
+      <section class="section-box letter">
+        <h2>My Letter to You</h2>
+        <p>Write your heartfelt birthday message here...</p>
+      </section>
+
+      <section class="section-box surprise">
+        <h2>Surprise 🎉</h2>
+        <p>Put your hidden message or interactive code here.</p>
+      </section>
+    </main>
+  </div>
+
 </body>
 </html>
