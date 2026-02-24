@@ -201,14 +201,29 @@ THÔI NÀO CÔ GÁI ƠI, BẠN CÓ THỂ ĐỌC NÓ BẤT CỨ LÚC NÀO BẠN M
 Xin lỗi vì đã bắt bạn phải đọc một lá thư dài như thế này. Mình đã định viết tay nhưng thư của mình lúc nào cũng rất dài và mình sợ có những lỗi nhỏ có thể gây hiểu lầm. :) CHÚC MỪNG SINH NHẬT CÔ GÁI LỚN CỦA MÌNH 💗    
     
       With love,  
-      </article>
+      </div>
 
-      <section class="section-box surprise">
-        <h2>Surprise 🎉</h2>
-        <p>HAPPY BIRTHDAY KIDDO!</p>
-      </section>
-    </main>
+    <div class="box surprise">
+      <h3>Unlock Surprise 🎉</h3>
+      <input type="text" id="pass" placeholder="Password is: 20">
+      <button onclick="check()">Open</button>
+      <div id="secret">HAPPY BIRTHDAY KIDDO! 💖</div>
+    </div>
   </div>
+</div>
+
+<script>
+  function check() {
+    // Change "20" to whatever password you want
+    if(document.getElementById('pass').value == "20") {
+      document.getElementById('secret').style.display = "block";
+      alert("Unlocked! ✨");
+    } else {
+      alert("Try again! ❤️");
+    }
+  }
+</script>
 
 </body>
 </html>
+
